@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <div className="app-container">
       {/* Background Orbs for aesthetic lighting */}
@@ -27,11 +29,33 @@ function Home() {
           <button className="btn btn-primary">
             Create free account
           </button>
-          <button className="btn btn-secondary">
+          <button className="btn btn-secondary" onClick={() => setIsVideoOpen(true)}>
             See how it works
           </button>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {isVideoOpen && (
+        <div className="video-modal-overlay" onClick={() => setIsVideoOpen(false)}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="video-modal-close" onClick={() => setIsVideoOpen(false)}>
+              &times;
+            </button>
+            <div className="video-responsive">
+              <iframe
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/-Lt-ntUDj-g?autoplay=1"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Embedded youtube"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       <main className="content-wrapper dashboard-mockup">
         <div className="mockup-header">
