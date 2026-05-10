@@ -16,6 +16,7 @@ function Footer() {
           <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
         </div>
       </div>
+	<div>Hello Worlds</div>
     </footer>
   );
 }
