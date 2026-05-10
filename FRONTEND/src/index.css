@@ -25,14 +25,28 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.app-container {
+/* Layout */
+.app-layout {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container, .page-content-wrapper {
+  flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 4rem 1rem;
 }
 
 /* Ambient glowing orbs */
@@ -69,7 +83,7 @@ body {
   100% { transform: translate(-30px, 50px) scale(0.9); }
 }
 
-/* Glassmorphism Card */
+/* Glassmorphism Card (Home) */
 .content-wrapper {
   position: relative;
   z-index: 10;
@@ -80,12 +94,87 @@ body {
   border-radius: 24px;
   padding: 3rem;
   max-width: 800px;
-  width: 90%;
+  width: 100%;
   text-align: center;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
   transform: translateY(30px);
+}
+
+/* Document Pages (Privacy/Terms) */
+.document-container {
+  position: relative;
+  z-index: 10;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.document-container h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.document-container h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.document-body {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.document-body p {
+  margin-bottom: 1rem;
+}
+
+.document-body ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.document-body li {
+  margin-bottom: 0.5rem;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 2rem !important;
+  color: var(--accent-2);
+}
+
+.placeholder-note {
+  margin-top: 3rem;
+  padding: 1rem;
+  border-left: 3px solid var(--accent-1);
+  background: rgba(255, 42, 95, 0.05);
+  font-size: 0.9rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: var(--text-main);
 }
 
 @keyframes fade-up {
@@ -187,4 +276,62 @@ h1 {
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
+}
+
+/* Footer Styles */
+.site-footer {
+  width: 100%;
+  padding: 2rem 0;
+  border-top: 1px solid var(--glass-border);
+  background: rgba(5, 5, 8, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 20;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-copyright {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--text-main);
+}
+
+.footer-separator {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 }
